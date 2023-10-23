@@ -4,6 +4,8 @@ import SwiftUI
 
 public struct LockScreenHaveConfirmPIN : View {
     
+    @Binding var isUserPass_PIN_making:Bool
+    
     @Binding var walletName:String
     @State var password:String = ""
     @State var passwordBuoc1:String = ""
@@ -12,9 +14,10 @@ public struct LockScreenHaveConfirmPIN : View {
     
     var textAskUserDo:String
     
-    public init(textAskUserDo:String,walletName: Binding<String>) {
+    public init(textAskUserDo:String,walletName: Binding<String>, isUserPass_PIN_making:Binding<Bool>) {
         self._walletName = walletName
         self.textAskUserDo = textAskUserDo
+        self._isUserPass_PIN_making = isUserPass_PIN_making
     }
     
     public var body: some View{
@@ -99,12 +102,12 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(1...9,id: \.self){value in
                         
-                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
+                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName, isUserPass_PIN_making: $isUserPass_PIN_making)
                     }
                     
-                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
+                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName, isUserPass_PIN_making: $isUserPass_PIN_making)
                     
-                    PasswordButton3(value: "0", password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
+                    PasswordButton3(value: "0", password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName, isUserPass_PIN_making: $isUserPass_PIN_making)
                 }
                 .padding(.bottom)
                 
@@ -270,7 +273,7 @@ struct PasswordButton3 : View {
     @Binding var password : String
     @Binding var passwordBuoc1 : String
     @Binding var walletName: String
-    
+    @Binding var isUserPass_PIN_making:Bool
     var body: some View{
         
         Button(action: setPassword, label: {
@@ -333,12 +336,13 @@ struct PasswordButton3 : View {
                                     print("tạo ví tên là: ", walletName)
                                     let data = Data(password.utf8)
                                     keychain_save(data, service: "PoolsWallet_KeyChain_PIN", account: walletName)
-                                    print("save vao key chain xong")
+                                    print("save vao key chain xong ví: ", walletName)
                                     let d = keychain_read(service: "PoolsWallet_KeyChain_PIN", account: walletName)
-                                    print(String(decoding: d ?? Data(), as: UTF8.self))
-                                    //nếu đã ok bước tạo mã pin, 2 mã pin trùng khớp, ta sẽ tạo wallet với 12 ký tự
-                                    //ghi vào userdefault để chạy app lần sau không cần load view tao wallet nữa mà dùng mã pin login chạy vào app luôn
+                                    print("mã pin là: ",String(decoding: d ?? Data(), as: UTF8.self))
                                     
+                                    //nếu đã ok bước tạo mã pin, 2 mã pin trùng khớp, ta sẽ tạo wallet với 12 ký tự -> thông báo ra bên ngoài package
+                                    //ghi vào userdefault để chạy app lần sau không cần load view tao wallet nữa mà dùng mã pin login chạy vào app luôn
+                                    self.isUserPass_PIN_making = true
                                 }
                                 else{
                                     print("PASS CODE FAIL!")
