@@ -119,7 +119,7 @@ struct PasswordView : View {
         ZStack{
             
             Circle()
-                .stroke(Color.white,lineWidth: 2)
+                .stroke(Color.blue,lineWidth: 2)
                 .frame(width: 30, height: 30)
             
             // checking whether it is typed...
@@ -127,7 +127,7 @@ struct PasswordView : View {
             if password.count > index{
                 
                 Circle()
-                    .fill(Color.white)
+                    .fill(Color.blue)
                     .frame(width: 30, height: 30)
             }
         }
@@ -154,7 +154,7 @@ struct PasswordButton : View {
                     
                     Image(systemName: "delete.left")
                         .font(.system(size: 24))
-                        .foregroundColor(.white)
+                        .foregroundColor(.blue)
                 }
                 else{
                     
