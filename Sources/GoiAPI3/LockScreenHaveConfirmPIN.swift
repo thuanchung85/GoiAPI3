@@ -4,15 +4,16 @@ import SwiftUI
 
 public struct LockScreenHaveConfirmPIN : View {
     
-    @Binding var password:String
+    @Binding var walletName:String
+    @State var password:String = ""
     @State var passwordBuoc1:String = ""
 
     @State var isShowConFirmPassCodeView:Bool = false
     
     var textAskUserDo:String
     
-    public init(textAskUserDo:String,password: Binding<String>) {
-        self._password = password
+    public init(textAskUserDo:String,walletName: Binding<String>) {
+        self._walletName = walletName
         self.textAskUserDo = textAskUserDo
     }
     
@@ -98,12 +99,12 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(1...9,id: \.self){value in
                         
-                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1)
+                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
                     }
                     
-                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1)
+                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
                     
-                    PasswordButton3(value: "0", password: $password, passwordBuoc1: $passwordBuoc1)
+                    PasswordButton3(value: "0", password: $password, passwordBuoc1: $passwordBuoc1, walletName: $walletName)
                 }
                 .padding(.bottom)
                 
@@ -268,6 +269,7 @@ struct PasswordButton3 : View {
     var value : String
     @Binding var password : String
     @Binding var passwordBuoc1 : String
+    @Binding var walletName: String
     
     var body: some View{
         
@@ -327,6 +329,11 @@ struct PasswordButton3 : View {
                                 if (passwordBuoc1 == password)
                                 {
                                     print("OK PASS")
+                                    //save pass vào keychain
+                                    //keychain_save(<#T##data: Data##Data#>, service: "PoolsWallet_KeyChain_PIN", account: walletName)
+                                    //nếu đã ok bước tạo mã pin, 2 mã pin trùng khớp, ta sẽ tạo wallet với 12 ký tự
+                                    //ghi vào userdefault để chạy app lần sau không cần load view tao wallet nữa mà dùng mã pin login chạy vào app luôn
+                                    
                                 }
                                 else{
                                     print("PASS CODE FAIL!")
