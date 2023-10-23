@@ -1,7 +1,7 @@
 
 import AuthenticationServices
 
-func keychain_save(_ data: Data, service: String, account: String) {
+public func keychain_save(_ data: Data, service: String, account: String) {
     let query = [
         kSecValueData: data,
         kSecClass: kSecClassGenericPassword,
@@ -20,7 +20,7 @@ func keychain_save(_ data: Data, service: String, account: String) {
     }
 }
  
-func keychain_update(_ data: Data, service: String, account: String) {
+public func keychain_update(_ data: Data, service: String, account: String) {
     let query = [
         kSecClass: kSecClassGenericPassword,
         kSecAttrService: service,
@@ -32,7 +32,7 @@ func keychain_update(_ data: Data, service: String, account: String) {
 }
 
 
-func keychain_read(service: String, account: String) -> Data? {
+public func keychain_read(service: String, account: String) -> Data? {
     let query = [
         kSecClass: kSecClassGenericPassword,
         kSecAttrService: service,
@@ -45,7 +45,7 @@ func keychain_read(service: String, account: String) -> Data? {
     return result as? Data
 }
  
-func keychain_delete(service: String, account: String) {
+public func keychain_delete(service: String, account: String) {
     let query = [
         kSecClass: kSecClassGenericPassword,
         kSecAttrService: service,
