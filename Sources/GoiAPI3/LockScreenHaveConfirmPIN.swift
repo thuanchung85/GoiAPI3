@@ -6,7 +6,7 @@ public struct LockScreenHaveConfirmPIN : View {
     
     @Binding var password:String
     @State var passwordBuoc1:String = ""
-    @State var passwordBuoc1Confirm:String = ""
+
     @State var isShowConFirmPassCodeView:Bool = false
     
     var textAskUserDo:String
@@ -98,12 +98,12 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(1...9,id: \.self){value in
                         
-                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
+                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1)
                     }
                     
-                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
+                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1)
                     
-                    PasswordButton3(value: "0", password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
+                    PasswordButton3(value: "0", password: $password, passwordBuoc1: $passwordBuoc1)
                 }
                 .padding(.bottom)
                 
@@ -148,6 +148,7 @@ struct PasswordView3 : View {
     
     var index : Int
     @Binding var password : String
+    
     
     var body: some View{
         
@@ -255,7 +256,7 @@ struct PasswordButton3 : View {
     
     var value : String
     @Binding var password : String
-    @Binding var passwordBuoc1Confirm : String
+    @Binding var passwordBuoc1 : String
     
     var body: some View{
         
@@ -309,9 +310,17 @@ struct PasswordButton3 : View {
                         withAnimation{
                             
                             if password.count == 6{
-                                
+                                print("password trước đó: ", passwordBuoc1)
                                 print("password confirm: ",password)
-                               //gọi tiếp view confirm passcode
+                               //check if hai pass trùng hay không
+                                if (passwordBuoc1 == password)
+                                {
+                                    print("OK PASS")
+                                }
+                                else{
+                                    print("PASS CODE FAIL!")
+                                    password.removeAll()
+                                }
                                
                             }
                         }
