@@ -8,12 +8,12 @@ public struct LockScreen : View {
     
     // you can change it when user clicks reset password....
     // AppStorage => UserDefaults....
-     @AppStorage("lock_Password") var key = "12345"
+     @AppStorage("lock_Password") var key = "123456"
     @Binding var unLocked : Bool
     @State var wrongPassword = false
   
     
-    public init(password: Binding<String>, key: String = "12345", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
+    public init(password: Binding<String>, key: String = "123456", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
         self._password = password
         self.key = key
         self._unLocked = unLocked
@@ -24,41 +24,9 @@ public struct LockScreen : View {
         
         VStack{
             
-            HStack{
-                
-                Spacer(minLength: 0)
-                
-                Menu(content: {
-                    
-                    Label(
-                        title: { Text("Help") },
-                        icon: { Image(systemName: "info.circle.fill") })
-                        .onTapGesture(perform: {
-                            // perform actions...
-                        })
-                    
-                    Label(
-                        title: { Text("Reset Password") },
-                        icon: { Image(systemName: "key.fill") })
-                        .onTapGesture(perform: {
-                            
-                        })
-                    
-                }) {
-                    
-                    Image(systemName: "person")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 19, height: 19)
-                        .foregroundColor(.white)
-                        .padding()
-                }
-            }
-            .padding(.leading)
-            
             Image(systemName: "heart.fill")
                 .resizable()
-                .frame(width: 95, height: 95)
+                .frame(width: 50, height: 50)
                 .padding(.top,20)
             
             Text("Enter Pin to Unlock")
