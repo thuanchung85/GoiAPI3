@@ -44,7 +44,7 @@ public struct LockScreen : View {
                 }
             }
             // for smaller size iphones...
-            .padding(.top,UIScreen.main.bounds.width < 750 ? 10 : 20)
+            .padding(.top,10)
             
             // KeyPad....
             
