@@ -46,7 +46,7 @@ public struct LockScreen : View {
                     
                 }) {
                     
-                    Image("menu")
+                    Image(systemName: "person")
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: 19, height: 19)
