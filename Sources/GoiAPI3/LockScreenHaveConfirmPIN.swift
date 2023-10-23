@@ -238,7 +238,7 @@ struct PasswordButton2 : View {
                     
                     // Delay Animation...
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         
                         withAnimation{
                             
@@ -318,7 +318,7 @@ struct PasswordButton3 : View {
                     
                     // Delay Animation...
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         
                         withAnimation{
                             
@@ -331,7 +331,11 @@ struct PasswordButton3 : View {
                                     print("OK PASS")
                                     //save pass vào keychain
                                     print("tạo ví tên là: ", walletName)
-                                    //keychain_save(<#T##data: Data##Data#>, service: "PoolsWallet_KeyChain_PIN", account: walletName)
+                                    let data = Data(password.utf8)
+                                    keychain_save(data, service: "PoolsWallet_KeyChain_PIN", account: walletName)
+                                    print("save vao key chain xong")
+                                    let d = keychain_read(service: "PoolsWallet_KeyChain_PIN", account: walletName)
+                                    print(String(decoding: d ?? Data(), as: UTF8.self))
                                     //nếu đã ok bước tạo mã pin, 2 mã pin trùng khớp, ta sẽ tạo wallet với 12 ký tự
                                     //ghi vào userdefault để chạy app lần sau không cần load view tao wallet nữa mà dùng mã pin login chạy vào app luôn
                                     
