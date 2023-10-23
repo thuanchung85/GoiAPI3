@@ -56,7 +56,7 @@ public struct LockScreen : View {
             }
             .padding(.leading)
             
-            Image("logo")
+            Image(systemName: "heart.fill")
                 .resizable()
                 .frame(width: 95, height: 95)
                 .padding(.top,20)
