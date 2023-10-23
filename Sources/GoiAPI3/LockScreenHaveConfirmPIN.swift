@@ -107,6 +107,17 @@ public struct LockScreenHaveConfirmPIN : View {
                 }
                 .padding(.bottom)
                 
+                
+                //Reset lại Pin nếu user quên mất lần nhập ở bước 1
+                Button {
+                    print("Reset your Passcode! return lại bước 1")
+                    isShowConFirmPassCodeView = false
+                    password.removeAll()
+                } label: {
+                    Text("Reset your Passcode!")
+                        .font(.body)
+                       
+                }
             }
             .navigationTitle("")
             .navigationBarHidden(true)
