@@ -13,11 +13,12 @@ public struct LockScreen : View {
     @State var wrongPassword = false
     @State var textAskUserDo = "Enter your pin number"
     
-    public init(password: Binding<String>, key: String = "123456", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
+    public init(textAskUserDo:String,password: Binding<String>, key: String = "123456", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
         self._password = password
         self.key = key
         self._unLocked = unLocked
         self.wrongPassword = wrongPassword
+        self.textAskUserDo = textAskUserDo
     }
     
     public var body: some View{
