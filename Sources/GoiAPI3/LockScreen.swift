@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-struct LockScreen : View {
+public struct LockScreen : View {
     
     @Binding var password:String
     
@@ -11,9 +11,16 @@ struct LockScreen : View {
      @AppStorage("lock_Password") var key = "12345"
     @Binding var unLocked : Bool
     @State var wrongPassword = false
-    //let height = UIScreen.main.bounds.width
+  
     
-    var body: some View{
+    public init(password: Binding<String>, key: String = "12345", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
+        self._password = password
+        self.key = key
+        self._unLocked = unLocked
+        self.wrongPassword = wrongPassword
+    }
+    
+    public var body: some View{
         
         VStack{
             
