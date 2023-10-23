@@ -154,7 +154,7 @@ struct PasswordView3 : View {
         ZStack{
             
             Circle()
-                .stroke(Color.blue,lineWidth: 2)
+                .stroke(Color.red,lineWidth: 2)
                 .frame(width: 30, height: 30)
             
             // checking whether it is typed...
