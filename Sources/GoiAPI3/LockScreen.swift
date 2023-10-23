@@ -11,7 +11,7 @@ public struct LockScreen : View {
      @AppStorage("lock_Password") var key = "123456"
     @Binding var unLocked : Bool
     @State var wrongPassword = false
-    @State var textAskUserDo = "Enter your pin number"
+    var textAskUserDo:String
     
     public init(textAskUserDo:String,password: Binding<String>, key: String = "123456", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
         self._password = password
