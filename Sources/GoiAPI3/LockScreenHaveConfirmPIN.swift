@@ -37,7 +37,7 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(0..<6,id: \.self){index in
                         
-                        PasswordView(index: index, password: $password)
+                        PasswordView2(index: index, password: $password)
                     }
                 }
                 // for smaller size iphones...
@@ -85,7 +85,7 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(0..<6,id: \.self){index in
                         
-                        PasswordView(index: index, password: $password)
+                        PasswordView3(index: index, password: $password)
                     }
                 }
                 // for smaller size iphones...
@@ -114,7 +114,63 @@ public struct LockScreenHaveConfirmPIN : View {
     }
 }
 
+//================//////////
 
+struct PasswordView2 : View {
+    
+    var index : Int
+    @Binding var password : String
+    
+    var body: some View{
+        
+        ZStack{
+            
+            Circle()
+                .stroke(Color.blue,lineWidth: 2)
+                .frame(width: 30, height: 30)
+            
+            // checking whether it is typed...
+            
+            if password.count > index{
+                
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width: 30, height: 30)
+            }
+        }
+    }
+}
+
+
+//================//////////
+
+struct PasswordView3 : View {
+    
+    var index : Int
+    @Binding var password : String
+    
+    var body: some View{
+        
+        ZStack{
+            
+            Circle()
+                .stroke(Color.blue,lineWidth: 2)
+                .frame(width: 30, height: 30)
+            
+            // checking whether it is typed...
+            
+            if password.count > index{
+                
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 30, height: 30)
+            }
+        }
+    }
+}
+
+
+///////////////========================////////////
 struct PasswordButton2 : View {
     
     var value : String
@@ -191,6 +247,9 @@ struct PasswordButton2 : View {
     }
 }
 
+
+
+
 ////==============================
 struct PasswordButton3 : View {
     
@@ -262,3 +321,4 @@ struct PasswordButton3 : View {
         }
     }
 }
+
