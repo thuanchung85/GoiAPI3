@@ -160,7 +160,7 @@ struct PasswordButton : View {
                     
                     Text(value)
                         .font(.title)
-                        .foregroundColor(.white)
+                        .foregroundColor(.blue)
                 }
             }
             .padding()
