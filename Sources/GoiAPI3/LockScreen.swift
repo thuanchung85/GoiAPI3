@@ -11,7 +11,7 @@ public struct LockScreen : View {
      @AppStorage("lock_Password") var key = "123456"
     @Binding var unLocked : Bool
     @State var wrongPassword = false
-  
+    @State var textAskUserDo = "Enter your pin number"
     
     public init(password: Binding<String>, key: String = "123456", unLocked: Binding<Bool>, wrongPassword: Bool = false) {
         self._password = password
@@ -29,7 +29,7 @@ public struct LockScreen : View {
                 .frame(width: 50, height: 50)
                 .padding(.top,20)
             
-            Text("Enter Pin to Unlock")
+            Text(textAskUserDo)
                 .font(.title2)
                 .fontWeight(.heavy)
                 .padding(.top,20)
