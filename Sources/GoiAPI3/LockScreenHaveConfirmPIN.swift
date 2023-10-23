@@ -5,6 +5,8 @@ import SwiftUI
 public struct LockScreenHaveConfirmPIN : View {
     
     @Binding var password:String
+    @State var passwordBuoc1:String = ""
+    @State var passwordBuoc1Confirm:String = ""
     @State var isShowConFirmPassCodeView:Bool = false
     
     var textAskUserDo:String
@@ -48,12 +50,12 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(1...9,id: \.self){value in
                         
-                        PasswordButton2(value: "\(value)",password: $password, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
+                        PasswordButton2(value: "\(value)",password: $password, passwordBuoc1: $passwordBuoc1, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
                     }
                     
-                    PasswordButton2(value: "delete.fill",password: $password, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
+                    PasswordButton2(value: "delete.fill",password: $password, passwordBuoc1: $passwordBuoc1, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
                     
-                    PasswordButton2(value: "0", password: $password, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
+                    PasswordButton2(value: "0", password: $password, passwordBuoc1: $passwordBuoc1, isShowConFirmPassCodeView: $isShowConFirmPassCodeView)
                 }
                 .padding(.bottom)
                 
@@ -96,12 +98,12 @@ public struct LockScreenHaveConfirmPIN : View {
                     
                     ForEach(1...9,id: \.self){value in
                         
-                        PasswordButton3(value: "\(value)",password: $password)
+                        PasswordButton3(value: "\(value)",password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
                     }
                     
-                    PasswordButton3(value: "delete.fill",password: $password)
+                    PasswordButton3(value: "delete.fill",password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
                     
-                    PasswordButton3(value: "0", password: $password)
+                    PasswordButton3(value: "0", password: $password, passwordBuoc1Confirm: $passwordBuoc1Confirm)
                 }
                 .padding(.bottom)
                 
@@ -117,6 +119,7 @@ struct PasswordButton2 : View {
     
     var value : String
     @Binding var password : String
+    @Binding var passwordBuoc1 : String
     @Binding var isShowConFirmPassCodeView:Bool
     
     var body: some View{
@@ -175,6 +178,10 @@ struct PasswordButton2 : View {
                                 print(password)
                                //gọi tiếp view confirm passcode
                                 self.isShowConFirmPassCodeView = true
+                                //bắn password ra cho bên view bên trên
+                                self.passwordBuoc1 = password
+                                //reset lại password để cho view sau trống trơn
+                                password.removeAll()
                             }
                         }
                     }
@@ -184,11 +191,12 @@ struct PasswordButton2 : View {
     }
 }
 
+////==============================
 struct PasswordButton3 : View {
     
     var value : String
     @Binding var password : String
-  
+    @Binding var passwordBuoc1Confirm : String
     
     var body: some View{
         
@@ -202,7 +210,7 @@ struct PasswordButton3 : View {
                     
                     Image(systemName: "delete.left")
                         .font(.system(size: 24))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.red)
                 }
                 else{
                     
