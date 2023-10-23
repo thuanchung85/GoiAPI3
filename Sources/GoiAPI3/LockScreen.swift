@@ -48,13 +48,11 @@ public struct LockScreen : View {
             
             // KeyPad....
             
-            Spacer(minLength: 0)
-            
             Text(wrongPassword ? "Incorrect Pin" : "")
                 .foregroundColor(.red)
                 .fontWeight(.heavy)
             
-            Spacer(minLength: 0)
+            
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3),spacing: UIScreen.main.bounds.width < 750 ? 5 : 15){
                 
