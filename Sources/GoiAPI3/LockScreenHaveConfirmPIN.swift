@@ -330,6 +330,7 @@ struct PasswordButton3 : View {
                                 {
                                     print("OK PASS")
                                     //save pass vào keychain
+                                    print("tạo ví tên là: ", walletName)
                                     //keychain_save(<#T##data: Data##Data#>, service: "PoolsWallet_KeyChain_PIN", account: walletName)
                                     //nếu đã ok bước tạo mã pin, 2 mã pin trùng khớp, ta sẽ tạo wallet với 12 ký tự
                                     //ghi vào userdefault để chạy app lần sau không cần load view tao wallet nữa mà dùng mã pin login chạy vào app luôn
