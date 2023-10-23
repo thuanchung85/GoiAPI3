@@ -21,7 +21,7 @@ public struct LockScreenHaveConfirmPIN : View {
         if (isShowConFirmPassCodeView == false){
             VStack{
                 
-                Image(systemName: "account")
+                Image(systemName: "multiply.circle.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .padding(.top,20)
@@ -68,7 +68,7 @@ public struct LockScreenHaveConfirmPIN : View {
         else{
             VStack{
                 
-                Image(systemName: "account")
+                Image(systemName: "multiply.circle.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .padding(.top,20)
