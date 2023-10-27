@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-public struct LockScreenHaveConfirmPIN : View {
+public struct PasscodeView_ConfirmPIN : View {
     
     @Binding var isUserPass_PIN_making:Bool
     

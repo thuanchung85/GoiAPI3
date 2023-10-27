@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-public struct LockScreen : View {
+public struct PasscodeView : View {
     
     @Binding var password:String
     
