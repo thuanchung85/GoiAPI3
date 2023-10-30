@@ -21,7 +21,7 @@ public struct PasscodeView_Login : View {
             VStack{
                 
                 Text(textAskUserDo)
-                    .font(.custom("Arial ", size: 22))
+                    .font(.custom("Arial ", size: 18))
                     .padding(.top,10)
                 
                 HStack(spacing: 22){
