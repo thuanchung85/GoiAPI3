@@ -123,7 +123,7 @@ struct PasswordButton2 : View {
                             .fill(.gray.opacity(0.2))
                             .frame(width: 55, height: 55)
                         Text(value)
-                            .font(.title)
+                            .font(.body)
                             .foregroundColor(.black)
                     }
                 }
