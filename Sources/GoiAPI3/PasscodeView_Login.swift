@@ -20,15 +20,9 @@ public struct PasscodeView_Login : View {
         //Bước 1: hiện page cho user nhập mã PIN trước
             VStack{
                 
-                Image(systemName: "person")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .padding(.top,20)
-                
                 Text(textAskUserDo)
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                    .padding(.top,20)
+                    .font(.custom("Arial ", size: 22))
+                    .padding(.top,10)
                 
                 HStack(spacing: 22){
                     
@@ -40,7 +34,7 @@ public struct PasscodeView_Login : View {
                     }
                 }
                 // for smaller size iphones...
-                .padding(.top,10)
+                .padding(.top,22)
                 
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3),spacing: UIScreen.main.bounds.width < 750 ? 5 : 15){
@@ -79,8 +73,8 @@ struct PasswordView2 : View {
         ZStack{
             
             Circle()
-                .stroke(Color.blue,lineWidth: 2)
-                .frame(width: 30, height: 30)
+                .stroke(Color.blue,lineWidth: 1)
+                .frame(width: 25, height: 25)
             
             // checking whether it is typed...
             
@@ -88,7 +82,7 @@ struct PasswordView2 : View {
                 
                 Circle()
                     .fill(Color.blue)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 25, height: 25)
             }
         }
     }
@@ -114,16 +108,24 @@ struct PasswordButton2 : View {
                 if value.count > 1{
                     
                     // Image...
-                    
-                    Image(systemName: "delete.left")
-                        .font(.system(size: 24))
-                        .foregroundColor(.blue)
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(.gray.opacity(0.2))
+                            .frame(width: 55, height: 55)
+                        Image(systemName: "delete.left")
+                            .font(.system(size: 24))
+                            .foregroundColor(.black)
+                    }
                 }
                 else{
-                    
-                    Text(value)
-                        .font(.title)
-                        .foregroundColor(.blue)
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(.gray.opacity(0.2))
+                            .frame(width: 55, height: 55)
+                        Text(value)
+                            .font(.title)
+                            .foregroundColor(.black)
+                    }
                 }
             }
             .padding()
