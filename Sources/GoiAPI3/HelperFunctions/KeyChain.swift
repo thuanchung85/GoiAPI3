@@ -32,7 +32,7 @@ public func keychain_update(_ data: Data, service: String, account: String) {
 }
 
 
-public func keychain_read(service: String, account: String) -> Data? {
+public func keychain_read_ForLogin(service: String, account: String) -> Data? {
     let query = [
         kSecClass: kSecClassGenericPassword,
         kSecAttrService: service,
