@@ -164,7 +164,9 @@ struct PasswordButton2 : View {
                                 if(password == passwordSaved){
                                     self.isUserPass_PIN_login = true
                                 }
-                            
+                                else{
+                                    password.removeAll()
+                                }
                                 
                             }
                         }
